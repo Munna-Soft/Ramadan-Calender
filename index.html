@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>রমজান ক্যালেন্ডার ২০২৬ - সেহরি ও ইফতারের সময়সূচি বাংলাদেশ</title>
+    <meta name="description" content="২০২৬ সালের রমজান মাসের জন্য সেহরি ও ইফতারের সময়সূচি সহ একটি সম্পূর্ণ ক্যালেন্ডার। ঢাকা, চট্টগ্রাম, রাজশাহী, খুলনা, সিলেট, বরিশাল, রংপুর ও ময়মনসিংহ জেলার জন্য নির্ভুল সময়।">
+    <meta name="keywords" content="রমজান ক্যালেন্ডার ২০২৬, সেহরি সময়, ইফতার সময়, বাংলাদেশ, ঢাকা, চট্টগ্রাম, রাজশাহী, খুলনা, সিলেট, বরিশাল, রংপুর, ময়মনসিংহ">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="calendar-card">
+    <!-- header: moon & hijri -->
+    <div class="moon-header">
+        <span>🌙</span> রমজান ১৪৪৭ হিজরি <span>🌙</span>
+    </div>
+
+    <h1>রমজান ক্যালেন্ডার ২০২৬</h1>
+    <div class="subhead">সেহরি ও ইফতারের সময়সূচি</div>
+
+    <!-- জেলা নির্বাচন ড্রপডাউন -->
+    <div class="district-selector">
+        <label for="district">আপনার বিভাগ:</label>
+        <select id="district" onchange="updateDistrict()">
+            <option value="dhaka">ঢাকা</option>
+            <option value="chittagong">চট্টগ্রাম</option>
+            <option value="rajshahi">রাজশাহী</option>
+            <option value="khulna">খুলনা</option>
+            <option value="sylhet">সিলেট</option>
+            <option value="barisal">বরিশাল</option>
+            <option value="rangpur">রংপুর</option>
+            <option value="mymensingh">ময়মনসিংহ</option>
+        </select>
+    </div>
+
+    <!-- কাউন্টডাউন কার্ড -->
+    <div class="countdown-section">
+        <div class="countdown-card">
+            <div class="countdown-label">🍽️ সেহরির সময় বাকি</div>
+            <div class="countdown-time" id="sehri-countdown">--:--:--</div>
+        </div>
+        <div class="countdown-card">
+            <div class="countdown-label">🌅 ইফতারের সময় বাকি</div>
+            <div class="countdown-time" id="iftar-countdown">--:--:--</div>
+        </div>
+    </div>
+
+    <!-- আজকের ব্লক (ডাইনামিক) -->
+    <div class="today-box">
+        <div class="today-label" id="today-date-label">📅 আজ ৩ রমজান — শনিবার</div>
+        <div class="today-date">
+            <span id="district-name">ঢাকা</span> <small>সেহরি ও ইফতারের শেষ সময়</small>
+        </div>
+        <div class="prayer-times">
+            <div class="prayer-item">
+                <div class="label">সেহরি</div>
+                <div class="time" id="today-sehri">০৫:১১ <span class="unit">AM</span></div>
+            </div>
+            <div class="prayer-item">
+                <div class="label">ইফতার</div>
+                <div class="time" id="today-iftar">০৫:৫৯ <span class="unit">PM</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- দুটি দোয়া কার্ড -->
+    <div class="dua-grid">
+        <!-- সেহরির দোয়া -->
+        <div class="dua-card">
+            <div class="dua-title">🌅 সেহরির দোয়া</div>
+            <div class="arabic">وَبِصَوْمِ غَدٍ نَّوَيْتُ مِنْ شَهْرِ رَمَضَانَ</div>
+            <div class="pronunciation">উচ্চারণ: ওয়া বিসাওমি গাদিন নাওয়াইতু মিন শাহরি রমাদান</div>
+            <div class="meaning">“আমি রমজান মাসের আগামীকালের রোজার নিয়ত করলাম।”</div>
+        </div>
+        <!-- ইফতারের দোয়া -->
+        <div class="dua-card">
+            <div class="dua-title">☀️ ইফতারের দোয়া</div>
+            <div class="arabic">اَللَّهُمَّ إِنِّي لَكَ صُمْتُ وَبِكَ آمَنْتُ وَعَلَى رِزْقِكَ أَفْطَرْتُ</div>
+            <div class="pronunciation">উচ্চারণ: আল্লাহুম্মা ইন্নি লাকা সুমতু ওয়া বিকা আমানতু ওয়া আলা রিযক্বিকা আফতারতু</div>
+            <div class="meaning">“হে আল্লাহ! আমি তোমারই জন্য রোজা রেখেছি, তোমার প্রতি ঈমান এনেছি এবং তোমার রিযিক দ্বারা ইফতার করেছি।”</div>
+        </div>
+    </div>
+
+    <!-- সারণি শিরোনাম -->
+    <h2 style="font-size: 1.9rem; margin: 20px 0 5px; color: #295518;">বিভাগ ভিত্তিক সেহরি ও ইফতারের সময়সূচি</h2>
+
+    <!-- প্রথম ১০ দিনের টেবিল -->
+    <div class="phase-badge">🌟 প্রথম ১০ দিন — রহমতের দিন 🌟</div>
+    <div class="table-wrapper">
+        <table id="table-first">
+            <thead>
+                <tr>
+                    <th>রমজান</th>
+                    <th>তারিখ</th>
+                    <th>বার</th>
+                    <th>সেহরি</th>
+                    <th>ইফতার</th>
+                </tr>
+            </thead>
+            <tbody id="first-ten-days">
+                <!-- JavaScript দিয়ে ভরাট হবে -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ২য় ১০ দিনের টেবিল -->
+    <div class="phase-badge" style="background: #bed3b2;">✨ ২য় ১০ দিন — মাগফিরাতের দিন ✨</div>
+    <div class="table-wrapper">
+        <table id="table-second">
+            <thead>
+                <tr>
+                    <th>রমজান</th>
+                    <th>তারিখ</th>
+                    <th>বার</th>
+                    <th>সেহরি</th>
+                    <th>ইফতার</th>
+                </tr>
+            </thead>
+            <tbody id="second-ten-days">
+                <!-- JavaScript দিয়ে ভরাট হবে -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- শেষ ১০ দিনের টেবিল -->
+    <div class="phase-badge" style="background: #e4caa6;">🤲 শেষ ১০ দিন — নাজাতের দিন 🤲</div>
+    <div class="table-wrapper">
+        <table id="table-last">
+            <thead>
+                <tr>
+                    <th>রমজান</th>
+                    <th>তারিখ</th>
+                    <th>বার</th>
+                    <th>সেহরি</th>
+                    <th>ইফতার</th>
+                </tr>
+            </thead>
+            <tbody id="last-ten-days">
+                <!-- JavaScript দিয়ে ভরাট হবে -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- টেবিলের নিচে ফাঁকা রাখার জন্য স্পেসার -->
+    <div class="table-spacer"></div>
+
+    <!-- ফুটার তথ্যসূত্র -->
+    <div class="footer-note">
+        📖 তথ্যসূত্র: ইসলামিক ফাউন্ডেশন বাংলাদেশ  •  সহি ও নির্ভুল সময়সূচি
+    </div>
+
+    <!-- Munna MasterMind ক্রেডিট (লিংক সহ) -->
+    <div class="credit-footer">
+        ⚡ Code credit: <a href="https://www.facebook.com/The.Munna" target="_blank">Munna MasterMind</a> ⚡
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
