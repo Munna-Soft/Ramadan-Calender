@@ -20,6 +20,7 @@
 | ⏰ **১২ ঘন্টা AM/PM ফরম্যাট** | ব্যবহারকারী-বান্ধব সময় প্রদর্শন পদ্ধতি |
 | 📱 **রেসপনসিভ ডিজাইন** | মোবাইল, ট্যাবলেট ও ডেস্কটপে চমৎকার ভিউ |
 | 🌙 **দোয়া সহ** | সেহরি ও ইফতারের দোয়া আরবি, উচ্চারণ ও অর্থসহ |
+| 🕌 **ইসলামিক বানি** | আরবি, উচ্চারণ ও অর্থসহ ইসলামিক বানি |
 
 ## 🖥️ লাইভ ডেমো
 
@@ -38,6 +39,21 @@
 - **Responsive Design:** Flexbox & Media Queries
 
 ---
+
+## 👨‍💻 Author
+
+🛠️ Developed & maintenance by **Munna MasterMind**
+🔗 [Facebook](https://facebook.com/The.Munna) | [Portfolio](https://munna-soft.github.io/Portfolio)
+
+🌍 Open‑source • Free to use • Community‑friendly
+
+## 📜 License
+
+Released under the [**MIT License**](LICENSE) for details.
+
+```
+Copyright (c) 2026 Munna MasterMind
+```
 
 <div align="center"> <h3>❤️ রমজান মাস আমাদের সকলের জন্য রহমত, মাগফিরাত ও নাজাত বয়ে আনুক ❤️</h3> <p>প্রজেক্টটি ভালো লাগলে একটি ⭐ দিন এবং আপনার বন্ধুদের সাথে শেয়ার করুন</p>
 © ২০২৬ - মুন্না মাস্টারমাইন্ড | সমস্ত অধিকার সংরক্ষিত

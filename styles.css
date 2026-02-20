@@ -363,3 +363,146 @@
             h1 { font-size: 2rem; }
             .countdown-time { font-size: 2.5rem; }
         }
+
+        /* ========== ইসলামিক বাণী পপআপ স্টাইল ========== */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: linear-gradient(145deg, #fff9f0, #f0e6d8);
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 50px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 30px 60px rgba(0, 50, 0, 0.4), 0 0 0 3px #c9a87c;
+            border: 2px solid #e4c9a6;
+            animation: slideIn 0.4s ease;
+            position: relative;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 25px;
+            border-bottom: 3px dashed #b48c5c;
+            padding-bottom: 15px;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1f4f2b;
+            text-shadow: 2px 2px 0 #e9dccd;
+            background: #e8d9c0;
+            padding: 10px 30px;
+            border-radius: 50px;
+            display: inline-block;
+        }
+
+        .modal-body {
+            margin: 20px 0;
+        }
+
+        .modal-arabic {
+            font-size: 2.5rem;
+            font-family: 'Scheherazade New', 'Traditional Arabic', serif;
+            line-height: 2.2;
+            color: #1f3a2a;
+            font-weight: 700;
+            background: #f7ead9;
+            padding: 20px;
+            border-radius: 30px;
+            margin: 15px 0;
+            direction: rtl;
+            text-align: center;
+            border: 2px solid #c2a066;
+            box-shadow: inset 0 0 10px rgba(180, 140, 92, 0.3);
+        }
+
+        .modal-pronunciation {
+            font-size: 1.3rem;
+            color: #3f2e1b;
+            background: #fcf3e4;
+            padding: 15px;
+            border-radius: 25px;
+            font-style: italic;
+            border-left: 6px solid #c2a066;
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .modal-meaning {
+            font-size: 1.4rem;
+            margin-top: 20px;
+            color: #2b4d2b;
+            font-weight: 500;
+            background: #e1d5c0;
+            padding: 20px;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid #a7865f;
+        }
+
+        .modal-footer {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 2px solid #d4a76a;
+        }
+
+        .modal-hint {
+            font-size: 1.1rem;
+            color: #7a5a3a;
+            background: #fff0dd;
+            padding: 8px 20px;
+            border-radius: 30px;
+            display: inline-block;
+        }
+
+        /* মোবাইলের জন্য রেস্পন্সিভ */
+        @media (max-width: 680px) {
+            .modal-content {
+                margin: 20% auto;
+                padding: 20px;
+                width: 95%;
+            }
+            
+            .modal-arabic {
+                font-size: 1.8rem;
+            }
+            
+            .modal-title {
+                font-size: 1.5rem;
+            }
+            
+            .modal-meaning {
+                font-size: 1.2rem;
+            }
+        }
