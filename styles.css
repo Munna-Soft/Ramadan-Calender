@@ -1,4 +1,4 @@
-        /* ========== CSS স্টাইল ========== */
+/* ========== CSS স্টাইল ========== */
         * {
             margin: 0;
             padding: 0;
@@ -206,6 +206,73 @@
             margin-left: 5px;
         }
 
+        /* ৫ ওয়াক্ত নামাজের সময় সূচি স্টাইল */
+        .prayer-times-section {
+            background: linear-gradient(145deg, #fff5e6, #f0e6d8);
+            border-radius: 40px;
+            padding: 25px 20px;
+            margin: 30px 0 20px;
+            border: 2px solid #c9a87c;
+            box-shadow: 0 15px 25px rgba(100, 60, 10, 0.2);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1f4f2b;
+            text-align: center;
+            margin-bottom: 20px;
+            background: #e8d9c0;
+            padding: 12px 20px;
+            border-radius: 50px;
+            display: inline-block;
+            width: auto;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid #b48c5c;
+        }
+
+        .prayer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .prayer-card {
+            background: #fffaf2;
+            border-radius: 30px;
+            padding: 20px 15px;
+            text-align: center;
+            box-shadow: 0 10px 15px rgba(100, 60, 10, 0.1);
+            border-right: 5px solid #c9a87c;
+            border-bottom: 5px solid #b58d5b;
+            transition: transform 0.2s ease;
+        }
+
+        .prayer-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .prayer-name {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e4d2b;
+            margin-bottom: 10px;
+        }
+
+        .prayer-time {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #7a5a3a;
+            background: #f7ead9;
+            padding: 10px;
+            border-radius: 25px;
+            border: 1px solid #d4a76a;
+        }
+
         .dua-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -362,6 +429,7 @@
             .today-date { font-size: 2.2rem; }
             h1 { font-size: 2rem; }
             .countdown-time { font-size: 2.5rem; }
+            .prayer-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
         /* ========== ইসলামিক বাণী পপআপ স্টাইল ========== */

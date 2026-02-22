@@ -18,7 +18,7 @@
     <h1>রমজান ক্যালেন্ডার ২০২৬</h1>
     <div class="subhead">সেহরি ও ইফতারের সময়সূচি</div>
 
-    <!-- জেলা নির্বাচন ড্রপডাউন -->
+    <!-- বিভাগ নির্বাচন ড্রপডাউন -->
     <div class="district-selector">
         <label for="district">আপনার বিভাগ:</label>
         <select id="district" onchange="updateDistrict()">
@@ -42,6 +42,33 @@
         <div class="countdown-card">
             <div class="countdown-label">🌅 ইফতারের সময় বাকি</div>
             <div class="countdown-time" id="iftar-countdown">--:--:--</div>
+        </div>
+    </div>
+
+    <!-- ===== ৫ ওয়াক্ত নামাজের সময় সূচি ===== -->
+    <div class="prayer-times-section">
+        <h2 class="section-title">🕌 বিভাগভিত্তিক আজকের ৫ ওয়াক্ত নামাজের সময়সূচি</h2>
+        <div class="prayer-grid">
+            <div class="prayer-card">
+                <span class="prayer-name">ফজর</span>
+                <span class="prayer-time" id="fajr-time">--:-- --</span>
+            </div>
+            <div class="prayer-card">
+                <span class="prayer-name">যোহর</span>
+                <span class="prayer-time" id="dhuhr-time">--:-- --</span>
+            </div>
+            <div class="prayer-card">
+                <span class="prayer-name">আসর</span>
+                <span class="prayer-time" id="asr-time">--:-- --</span>
+            </div>
+            <div class="prayer-card">
+                <span class="prayer-name">মাগরিব</span>
+                <span class="prayer-time" id="maghrib-time">--:-- --</span>
+            </div>
+            <div class="prayer-card">
+                <span class="prayer-name">ইশা</span>
+                <span class="prayer-time" id="isha-time">--:-- --</span>
+            </div>
         </div>
     </div>
 
@@ -103,8 +130,8 @@
         </table>
     </div>
 
-    <!-- ২য় ১০ দিনের টেবিল -->
-    <div class="phase-badge" style="background: #bed3b2;">✨ ২য় ১০ দিন — মাগফিরাতের দিন ✨</div>
+    <!-- দ্বিতীয় ১০ দিনের টেবিল -->
+    <div class="phase-badge" style="background: #bed3b2;">✨ দ্বিতীয় ১০ দিন — মাগফিরাতের দিন ✨</div>
     <div class="table-wrapper">
         <table id="table-second">
             <thead>
@@ -167,7 +194,7 @@
             <div class="modal-meaning" id="modal-meaning"></div>
         </div>
         <div class="modal-footer">
-            <span class="modal-hint">বন্ধ করতে যেকোনো জায়গায় ক্লিক করুন</span>
+            <span class="modal-hint">বন্ধ করতে কার্ডের বাহিরে যেকোনো জায়গায় ক্লিক করুন</span>
         </div>
     </div>
 </div>

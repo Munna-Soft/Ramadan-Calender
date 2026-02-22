@@ -1,4 +1,4 @@
-    // ========== জাভাস্ক্রিপ্ট ==========
+// ========== জাভাস্ক্রিপ্ট ==========
     (function() {
         // বাংলা সংখ্যায় রূপান্তর ফাংশন
         function toBanglaNumber(num) {
@@ -57,6 +57,40 @@
             { day: 30, date: '২০ মার্চ', weekday: 'শুক্র', sehri: "04:47", iftar: "18:11" }
         ];
 
+        // ৫ ওয়াক্ত নামাজের বেস টাইম (ঢাকার জন্য)
+        const dhakaPrayerTimes = [
+            { day: 1, fajr: "05:12", dhuhr: "12:10", asr: "15:30", maghrib: "17:58", isha: "19:15" },
+            { day: 2, fajr: "05:11", dhuhr: "12:10", asr: "15:30", maghrib: "17:58", isha: "19:15" },
+            { day: 3, fajr: "05:11", dhuhr: "12:10", asr: "15:31", maghrib: "17:59", isha: "19:16" },
+            { day: 4, fajr: "05:10", dhuhr: "12:10", asr: "15:31", maghrib: "17:59", isha: "19:16" },
+            { day: 5, fajr: "05:09", dhuhr: "12:10", asr: "15:32", maghrib: "18:00", isha: "19:17" },
+            { day: 6, fajr: "05:08", dhuhr: "12:10", asr: "15:32", maghrib: "18:00", isha: "19:17" },
+            { day: 7, fajr: "05:08", dhuhr: "12:10", asr: "15:33", maghrib: "18:01", isha: "19:18" },
+            { day: 8, fajr: "05:07", dhuhr: "12:09", asr: "15:33", maghrib: "18:01", isha: "19:18" },
+            { day: 9, fajr: "05:06", dhuhr: "12:09", asr: "15:34", maghrib: "18:02", isha: "19:19" },
+            { day: 10, fajr: "05:05", dhuhr: "12:09", asr: "15:34", maghrib: "18:02", isha: "19:19" },
+            { day: 11, fajr: "05:05", dhuhr: "12:09", asr: "15:35", maghrib: "18:03", isha: "19:20" },
+            { day: 12, fajr: "05:04", dhuhr: "12:09", asr: "15:35", maghrib: "18:03", isha: "19:20" },
+            { day: 13, fajr: "05:03", dhuhr: "12:09", asr: "15:36", maghrib: "18:04", isha: "19:21" },
+            { day: 14, fajr: "05:02", dhuhr: "12:09", asr: "15:36", maghrib: "18:04", isha: "19:21" },
+            { day: 15, fajr: "05:01", dhuhr: "12:09", asr: "15:37", maghrib: "18:05", isha: "19:22" },
+            { day: 16, fajr: "05:00", dhuhr: "12:08", asr: "15:37", maghrib: "18:05", isha: "19:22" },
+            { day: 17, fajr: "04:59", dhuhr: "12:08", asr: "15:38", maghrib: "18:06", isha: "19:23" },
+            { day: 18, fajr: "04:58", dhuhr: "12:08", asr: "15:38", maghrib: "18:06", isha: "19:23" },
+            { day: 19, fajr: "04:57", dhuhr: "12:08", asr: "15:39", maghrib: "18:07", isha: "19:24" },
+            { day: 20, fajr: "04:57", dhuhr: "12:08", asr: "15:39", maghrib: "18:07", isha: "19:24" },
+            { day: 21, fajr: "04:56", dhuhr: "12:08", asr: "15:40", maghrib: "18:07", isha: "19:25" },
+            { day: 22, fajr: "04:55", dhuhr: "12:08", asr: "15:40", maghrib: "18:08", isha: "19:25" },
+            { day: 23, fajr: "04:54", dhuhr: "12:08", asr: "15:41", maghrib: "18:08", isha: "19:26" },
+            { day: 24, fajr: "04:53", dhuhr: "12:08", asr: "15:41", maghrib: "18:09", isha: "19:26" },
+            { day: 25, fajr: "04:52", dhuhr: "12:07", asr: "15:41", maghrib: "18:09", isha: "19:27" },
+            { day: 26, fajr: "04:51", dhuhr: "12:07", asr: "15:42", maghrib: "18:10", isha: "19:27" },
+            { day: 27, fajr: "04:50", dhuhr: "12:07", asr: "15:42", maghrib: "18:10", isha: "19:28" },
+            { day: 28, fajr: "04:49", dhuhr: "12:07", asr: "15:43", maghrib: "18:10", isha: "19:28" },
+            { day: 29, fajr: "04:48", dhuhr: "12:07", asr: "15:43", maghrib: "18:11", isha: "19:29" },
+            { day: 30, fajr: "04:47", dhuhr: "12:07", asr: "15:44", maghrib: "18:11", isha: "19:29" }
+        ];
+
         // জেলার অফসেট (মিনিটে) ঢাকা থেকে
         const districtOffset = {
             dhaka: 0, chittagong: -2, rajshahi: +4, khulna: +3,
@@ -104,7 +138,38 @@
             return all;
         }
 
+        // সব জেলার নামাজের সময় জেনারেট
+        function generateAllPrayerTimes() {
+            let all = {};
+            for (let dist in districtOffset) {
+                let offset = districtOffset[dist];
+                let times = dhakaPrayerTimes.map(item => {
+                    function adjustTime(timeStr) {
+                        let [h, m] = timeStr.split(':').map(Number);
+                        let totalMin = h * 60 + m + offset;
+                        while (totalMin < 0) totalMin += 24 * 60;
+                        while (totalMin >= 24 * 60) totalMin -= 24 * 60;
+                        let newH = Math.floor(totalMin / 60) % 24;
+                        let newM = totalMin % 60;
+                        return `${newH.toString().padStart(2, '0')}:${newM.toString().padStart(2, '0')}`;
+                    }
+                    
+                    return {
+                        day: item.day,
+                        fajr: adjustTime(item.fajr),
+                        dhuhr: adjustTime(item.dhuhr),
+                        asr: adjustTime(item.asr),
+                        maghrib: adjustTime(item.maghrib),
+                        isha: adjustTime(item.isha)
+                    };
+                });
+                all[dist] = times;
+            }
+            return all;
+        }
+
         const allDistricts = generateAllDistrictTimes();
+        const allPrayerTimes = generateAllPrayerTimes();
         let currentDistrict = 'dhaka';
 
         // বর্তমান রমজান দিন নির্ণয়
@@ -166,6 +231,19 @@
                 sehriTarget, iftarTarget, todaySehri, todayIftar,
                 todayDay, todayInfo: todayTime, nextDayInfo: nextDayTime
             };
+        }
+
+        // ৫ ওয়াক্ত নামাজের সময় আপডেট
+        function updatePrayerTimes(district) {
+            const todayDay = getCurrentRamadanDay();
+            const prayerTimes = allPrayerTimes[district];
+            const todayPrayer = prayerTimes.find(t => t.day === todayDay) || prayerTimes[0];
+            
+            document.getElementById('fajr-time').innerHTML = to12HourFormat(todayPrayer.fajr);
+            document.getElementById('dhuhr-time').innerHTML = to12HourFormat(todayPrayer.dhuhr);
+            document.getElementById('asr-time').innerHTML = to12HourFormat(todayPrayer.asr);
+            document.getElementById('maghrib-time').innerHTML = to12HourFormat(todayPrayer.maghrib);
+            document.getElementById('isha-time').innerHTML = to12HourFormat(todayPrayer.isha);
         }
 
         // টেবিল রেন্ডার ফাংশন (৩টি টেবিলে ভাগ করা)
@@ -276,6 +354,9 @@
             const im = Math.floor((iftarDiff % (1000 * 60 * 60)) / (1000 * 60));
             const isec = Math.floor((iftarDiff % (1000 * 60)) / 1000);
             document.getElementById('iftar-countdown').innerText = `${pad(ih)}:${pad(im)}:${pad(isec)}`;
+
+            // ৫ ওয়াক্ত নামাজের সময় আপডেট
+            updatePrayerTimes(dist);
 
             // টেবিল রেন্ডার
             renderTables(dist);
