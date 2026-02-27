@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>রমজান ক্যালেন্ডার ২০২৬ - সেহরি ও ইফতারের সময়সূচি বাংলাদেশ</title>
-    <meta name="description" content="২০২৬ সালের রমজান মাসের জন্য সেহরি ও ইফতারের সময়সূচি সহ একটি সম্পূর্ণ ক্যালেন্ডার। ঢাকা, চট্টগ্রাম, রাজশাহী, খুলনা, সিলেট, বরিশাল, রংপুর ও ময়মনসিংহ জেলার জন্য নির্ভুল সময়।">
-    <meta name="keywords" content="রমজান ক্যালেন্ডার ২০২৬, সেহরি সময়, ইফতার সময়, বাংলাদেশ, ঢাকা, চট্টগ্রাম, রাজশাহী, খুলনা, সিলেট, বরিশাল, রংপুর, ময়মনসিংহ">
+    <title>রমজান ক্যালেন্ডার ২০২৬ - সেহরি, ইফতার ও নামাজের সময়সূচি বাংলাদেশ</title>
+    <meta name="description" content="২০২৬ সালের রমজান মাসের জন্য সেহরি, ইফতার ও নামাজের সময়সূচি সহ একটি সম্পূর্ণ ক্যালেন্ডার। ঢাকা, চট্টগ্রাম, রাজশাহী, খুলনা, সিলেট, বরিশাল, রংপুর ও ময়মনসিংহ বিভাগের জন্য নির্ভুল সময়।">
+    <meta name="keywords" content="রমজান ক্যালেন্ডার ২০২৬, সেহরি সময়, ইফতার সময়, নামাজের সময়: বাংলাদেশ, ঢাকা, চট্টগ্রাম, রাজশাহী, খুলনা, সিলেট, বরিশাল, রংপুর, ময়মনসিংহ">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,12 +16,12 @@
     </div>
 
     <h1>রমজান ক্যালেন্ডার ২০২৬</h1>
-    <div class="subhead">সেহরি ও ইফতারের সময়সূচি</div>
+    <div class="subhead">সেহরি, ইফতার ও নামাজের সময়সূচি</div>
 
     <!-- বিভাগ নির্বাচন ড্রপডাউন -->
-    <div class="district-selector">
-        <label for="district">আপনার বিভাগ:</label>
-        <select id="district" onchange="updateDistrict()">
+    <div class="division-selector">
+        <label for="division">আপনার বিভাগ:</label>
+        <select id="division" onchange="updatedivision()">
             <option value="dhaka">ঢাকা</option>
             <option value="chittagong">চট্টগ্রাম</option>
             <option value="rajshahi">রাজশাহী</option>
@@ -76,7 +76,7 @@
     <div class="today-box">
         <div class="today-label" id="today-date-label">📅 আজ ৩ রমজান — শনিবার</div>
         <div class="today-date">
-            <span id="district-name">ঢাকা</span> <small>সেহরি ও ইফতারের শেষ সময়</small>
+            <span id="division-name">ঢাকা</span> <small>সেহরি ও ইফতারের শেষ সময়</small>
         </div>
         <div class="prayer-times">
             <div class="prayer-item">
@@ -95,16 +95,16 @@
         <!-- সেহরির দোয়া -->
         <div class="dua-card">
             <div class="dua-title">🌅 সেহরির দোয়া</div>
-            <div class="arabic">وَبِصَوْمِ غَدٍ نَّوَيْتُ مِنْ شَهْرِ رَمَضَانَ</div>
-            <div class="pronunciation">উচ্চারণ: ওয়া বিসাওমি গাদিন নাওয়াইতু মিন শাহরি রমাদান</div>
-            <div class="meaning">“আমি রমজান মাসের আগামীকালের রোজার নিয়ত করলাম।”</div>
+            <div class="arabic">نَوَيْتُ اَنْ اَصُوْمَ غَدًا مِّنْ شَهْرِ رَمَضَانَ الْمُبَارَكِ فَرْضًا لَكَ يَا اللهُ فَتَقَبَّلْ مِنِّي اِنَّكَ اَنْتَ السَّمِيْعُ الْعَلِيْمُ</div>
+            <div class="pronunciation">উচ্চারণ: নাওয়াইতু আন আছুমা গাদাম মিন শাহরি রমাদানাল মুবারকি ফারদাল্লাকা ইয়া আল্লাহু, ফাতাকাব্বাল মিন্নি ইন্নাকা আনতাস সামিউল আলিম।</div>
+            <div class="meaning">“হে আল্লাহ! আগামীকাল তোমার পক্ষ থেকে নির্ধারিত রমজান মাসের ফরজ রোজা রাখার নিয়ত করলাম। অতএব, তুমি আমার পক্ষ থেকে তা কবুল করো। নিশ্চয়ই তুমি সর্বশ্রোতা ও সর্বজ্ঞ।”</div>
         </div>
         <!-- ইফতারের দোয়া -->
         <div class="dua-card">
             <div class="dua-title">☀️ ইফতারের দোয়া</div>
             <div class="arabic">اَللَّهُمَّ إِنِّي لَكَ صُمْتُ وَبِكَ آمَنْتُ وَعَلَى رِزْقِكَ أَفْطَرْتُ</div>
             <div class="pronunciation">উচ্চারণ: আল্লাহুম্মা ইন্নি লাকা সুমতু ওয়া বিকা আমানতু ওয়া আলা রিযক্বিকা আফতারতু</div>
-            <div class="meaning">“হে আল্লাহ! আমি তোমারই জন্য রোজা রেখেছি, তোমার প্রতি ঈমান এনেছি এবং তোমার রিযিক দ্বারা ইফতার করেছি।”</div>
+            <div class="meaning">“হে আল্লাহ! আমি তোমারই জন্য রোজা রেখেছি, তোমার প্রতি ঈমান এনেছি এবং তোমার রিযিক দ্বারা ইফতার করতেছি।”</div>
         </div>
     </div>
 

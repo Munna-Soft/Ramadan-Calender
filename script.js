@@ -91,24 +91,24 @@
             { day: 30, fajr: "04:47", dhuhr: "12:07", asr: "15:44", maghrib: "18:11", isha: "19:29" }
         ];
 
-        // জেলার অফসেট (মিনিটে) ঢাকা থেকে
-        const districtOffset = {
+        // বিভাগের অফসেট (মিনিটে) ঢাকা থেকে
+        const divisionOffset = {
             dhaka: 0, chittagong: -2, rajshahi: +4, khulna: +3,
             sylhet: -1, barisal: +2, rangpur: +5, mymensingh: +1
         };
 
-        // জেলার নাম বাংলায়
-        const districtNames = {
+        // বিভাগের নাম বাংলায়
+        const divisionNames = {
             dhaka: 'ঢাকা', chittagong: 'চট্টগ্রাম', rajshahi: 'রাজশাহী',
             khulna: 'খুলনা', sylhet: 'সিলেট', barisal: 'বরিশাল',
             rangpur: 'রংপুর', mymensingh: 'ময়মনসিংহ'
         };
 
-        // সব জেলার টাইম জেনারেট
-        function generateAllDistrictTimes() {
+        // সব বিভাগের টাইম জেনারেট
+        function generateAlldivisionTimes() {
             let all = {};
-            for (let dist in districtOffset) {
-                let offset = districtOffset[dist];
+            for (let dist in divisionOffset) {
+                let offset = divisionOffset[dist];
                 let times = dhakaTimes.map(item => {
                     let [sh, sm] = item.sehri.split(':').map(Number);
                     let [ih, im] = item.iftar.split(':').map(Number);
@@ -138,11 +138,11 @@
             return all;
         }
 
-        // সব জেলার নামাজের সময় জেনারেট
+        // সব বিভাগের নামাজের সময় জেনারেট
         function generateAllPrayerTimes() {
             let all = {};
-            for (let dist in districtOffset) {
-                let offset = districtOffset[dist];
+            for (let dist in divisionOffset) {
+                let offset = divisionOffset[dist];
                 let times = dhakaPrayerTimes.map(item => {
                     function adjustTime(timeStr) {
                         let [h, m] = timeStr.split(':').map(Number);
@@ -168,9 +168,9 @@
             return all;
         }
 
-        const allDistricts = generateAllDistrictTimes();
+        const alldivisions = generateAlldivisionTimes();
         const allPrayerTimes = generateAllPrayerTimes();
-        let currentDistrict = 'dhaka';
+        let currentdivision = 'dhaka';
 
         // বর্তমান রমজান দিন নির্ণয়
         function getCurrentRamadanDay() {
@@ -194,9 +194,9 @@
 
         function pad(num) { return num.toString().padStart(2, '0'); }
 
-        function getTargetTimes(district) {
+        function getTargetTimes(division) {
             const todayDay = getCurrentRamadanDay();
-            const times = allDistricts[district];
+            const times = alldivisions[division];
             
             const todayTime = times.find(t => t.day === todayDay) || times[0];
             const nextDayTime = times.find(t => t.day === todayDay + 1) || times.find(t => t.day === todayDay);
@@ -234,9 +234,9 @@
         }
 
         // ৫ ওয়াক্ত নামাজের সময় আপডেট
-        function updatePrayerTimes(district) {
+        function updatePrayerTimes(division) {
             const todayDay = getCurrentRamadanDay();
-            const prayerTimes = allPrayerTimes[district];
+            const prayerTimes = allPrayerTimes[division];
             const todayPrayer = prayerTimes.find(t => t.day === todayDay) || prayerTimes[0];
             
             document.getElementById('fajr-time').innerHTML = to12HourFormat(todayPrayer.fajr);
@@ -247,8 +247,8 @@
         }
 
         // টেবিল রেন্ডার ফাংশন (৩টি টেবিলে ভাগ করা)
-        function renderTables(district) {
-            const times = allDistricts[district];
+        function renderTables(division) {
+            const times = alldivisions[division];
             const todayDay = getCurrentRamadanDay();
             
             // প্রথম ১০ দিন (১-১০)
@@ -304,7 +304,7 @@
         }
 
         function updateUI() {
-            const dist = currentDistrict;
+            const dist = currentdivision;
             const targets = getTargetTimes(dist);
             const now = new Date();
             const todayDay = targets.todayDay;
@@ -314,8 +314,8 @@
             const dayInBangla = toBanglaNumber(todayDay);
             document.getElementById('today-date-label').innerHTML = `📅 আজ ${dayInBangla} রমজান — ${todayInfo.weekday}`;
 
-            // জেলার নাম আপডেট
-            document.getElementById('district-name').textContent = districtNames[dist];
+            // বিভাগের নাম আপডেট
+            document.getElementById('division-name').textContent = divisionNames[dist];
 
             // আজকের সময় আপডেট (১২ ঘন্টা ফরম্যাটে)
             const sehriHour = targets.todaySehri.getHours();
@@ -362,9 +362,9 @@
             renderTables(dist);
         }
 
-        window.updateDistrict = function() {
-            const select = document.getElementById('district');
-            currentDistrict = select.value;
+        window.updatedivision = function() {
+            const select = document.getElementById('division');
+            currentdivision = select.value;
             updateUI();
         };
 
@@ -373,7 +373,7 @@
         
         // প্রথম লোডে
         window.onload = function() { 
-            updateDistrict(); 
+            updatedivision(); 
             
             // ৫ সেকেন্ড পর পপআপ দেখাও
             setTimeout(showIslamicMessageModal, 5000);

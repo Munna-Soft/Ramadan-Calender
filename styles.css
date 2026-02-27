@@ -73,7 +73,7 @@
             border: 1px dashed #b48c5c;
         }
 
-        .district-selector {
+        .division-selector {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -86,7 +86,7 @@
             flex-wrap: wrap;
         }
 
-        .district-selector label {
+        .division-selector label {
             font-size: 1.6rem;
             font-weight: 600;
             color: #2f4d2f;
